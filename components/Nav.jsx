@@ -10,6 +10,7 @@ const Nav = () => {
 const isUserLoggedIn = true;
 
 const [providers, setProviders] = useState(null);
+const [toggleDrop, setToggleDrop] = useState(false);
 
 useEffect(() => {
     const setProviders = async () => {
@@ -58,14 +59,36 @@ useEffect(() => {
      <div className='sm:hidden flex'>
     {isUserLoggedIn ? (
         <div className='flex'>
-        <Link href='/profile'> <Image 
+       <Image 
          src='/assets/images/logo.svg'
          width={37}
          height={37}
          className='rounded-full'
          alt='profile'
-         onClick={() => {}}
-         /></Link>
+         onClick={() => setToggleDrop((prev) => !prev)}
+         />
+         {toggleDrop && (
+            <div className='dropdown right-0 top-full'>
+                <Link
+                href='/profile'
+                className='dropdown_link'
+                onClick={() => setToggleDrop(false)}
+                >My Profile</Link>
+                  <Link
+                href='/create-prompt'
+                className='dropdown_link'
+                onClick={() => setToggleDrop(false)}
+                >Create Prompt</Link>
+                <button
+                type='button'
+                onClick={() => {
+                    setToggleDrop(false);
+                    signOut;
+                }}
+                className=' mt-5  black_btn'
+                >Sign Out</button>
+            </div>
+         )}
          </div>
     ) : (
         <>
