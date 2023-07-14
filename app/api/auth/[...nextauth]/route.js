@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google';
+import User from '@models/user';
 import { connectToDB } from '@utils/database';
 
 console.log({ clientId: process.env.GOOGLE_ID,
@@ -22,7 +23,7 @@ const handler = NextAuth({
             await connectToDB();
 
             //check if a user exists
-
+            
             //if not, create a new user
 
             return true;
