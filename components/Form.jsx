@@ -23,6 +23,19 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
         className='form_textarea'
         />
       </lable>
+      <lable>
+        <span className='font-satoshi font-semibold text-base text-gray-700'>Prompt Field
+        <span>(#product, #webdevelopment, #idea)</span>
+        </span>
+        <input
+        value={post.tag}
+        onChange={(e) => setPost({ ...post,
+        tag: e.target.value})}
+        placeholder='#tag'
+        required
+        className='form_input'
+        />
+      </lable>
     </form>
   </section>
   )
